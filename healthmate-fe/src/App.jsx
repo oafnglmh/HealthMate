@@ -14,14 +14,14 @@ import NavBar from './components/NavBar'
 const App = () => {
   return (
     <div className="mx-4">
-      <NavBar/>
+      <NavBar />
       <Routes>
         {/* Public routes */}
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
-        <Route path="/doctors" element={<Doctors />} />
-        <Route path="/doctors/:speciality" element={<Doctors />} />
+        <Route path="/doctor" element={<Doctors />} />
+        <Route path="/doctor/:speciality" element={<Doctors />} />
         {/* Auth routes */}
         <Route path="/login" element={<Login />} />
 

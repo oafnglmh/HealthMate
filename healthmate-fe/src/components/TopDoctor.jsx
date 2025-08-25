@@ -14,18 +14,6 @@ const doctors = [
     speciality: 'Tim mạch',
     image: '/images/doctor.png',
   },
-  {
-    id: 3,
-    name: 'BS. Lê Văn C',
-    speciality: 'Thần kinh',
-    image: '/images/doctor.png',
-  },
-  {
-    id: 4,
-    name: 'BS. Phạm Thị D',
-    speciality: 'Da liễu',
-    image: '/images/doctor.png',
-  },
 ]
 
 const TopDoctor = () => {
@@ -43,7 +31,7 @@ const TopDoctor = () => {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
           {doctors.map((doctor) => (
             <div
-              onClick={() => navigate(`/doctor/${doctor.id}`)}
+              onClick={() => navigate(`/appointments/${doctor.id}`)}
               key={doctor.id}
               className="bg-white shadow-md rounded-xl p-4 flex flex-col items-center text-center hover:shadow-xl transition"
             >
