@@ -90,7 +90,7 @@ const NavBar = () => {
                   <button
                     onClick={() => {
                       setShowMenu(false)
-                      navigate('/appointments')
+                      navigate('/appointments/1')
                     }}
                     className="block w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100"
                   >
@@ -110,7 +110,7 @@ const NavBar = () => {
               )}
             </div>
           ) : (
-            <Link
+            <button
               className="block px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
               onClick={() => {
                 navigate('/login')
@@ -118,7 +118,7 @@ const NavBar = () => {
               }}
             >
               Tạo tài khoản
-            </Link>
+            </button>
           )}
         </div>
         <button className="md:hidden text-gray-700" onClick={() => setIsOpen(!isOpen)}>

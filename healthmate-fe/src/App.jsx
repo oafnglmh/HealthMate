@@ -26,8 +26,8 @@ const App = () => {
         <Route path="/login" element={<Login />} />
 
         {/* User routes */}
-        <Route path="/appointments" element={<MyAppointments />} />
-        <Route path="/appointments/:docId" element={<Appointments />} />
+        <Route path="/appointments" element={<Appointments />} />
+        <Route path="/appointments/:docId" element={<MyAppointments />} />
         <Route path="/profile" element={<MyProfile />} />
 
         {/* 404 fallback */}
