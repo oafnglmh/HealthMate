@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:healthmate_mobile/common/color_extension.dart';
+import 'package:healthmate_mobile/screen/Home/home_tab_screen.dart';
 
 class MainTabScreen extends StatefulWidget {
   const MainTabScreen({super.key});
@@ -104,7 +105,7 @@ class _MainTabScreenState extends State<MainTabScreen>
           Expanded(
             child: TabBarView(
               controller: controller,
-              children: [Container(), Container(), Container()],
+              children: [HomeTabScreen(), Container(), Container()],
             ),
           ),
         ],
