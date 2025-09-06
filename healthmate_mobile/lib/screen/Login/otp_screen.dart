@@ -2,6 +2,7 @@ import 'package:fl_country_code_picker/fl_country_code_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 import 'package:healthmate_mobile/common/color_extension.dart';
+import 'package:healthmate_mobile/screen/Home/main_tab_screen.dart';
 import 'package:healthmate_mobile/screen/Login/verified_screen.dart';
 
 class OtpScreen extends StatefulWidget {
@@ -69,7 +70,7 @@ class _OtpScreenState extends State<OtpScreen> {
                 ),
                 child: InkWell(
                   onTap: () {
-                    context.push(VerifiedScreen());
+                    context.push(MainTabScreen());
                   },
                   child: Container(
                     width: double.maxFinite,

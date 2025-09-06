@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:healthmate_mobile/common/color_extension.dart';
 import 'package:healthmate_mobile/common/globs.dart';
+import 'package:healthmate_mobile/screen/Home/main_tab_screen.dart';
 import 'package:healthmate_mobile/screen/Login/splash_screen.dart';
 
 void main() {
@@ -22,7 +23,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: TColor.primary),
         useMaterial3: false,
       ),
-      home: SplashScreen(),
+      home: MainTabScreen(),
     );
   }
 }
