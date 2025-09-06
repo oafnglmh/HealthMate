@@ -1,6 +1,7 @@
 import 'package:fl_country_code_picker/fl_country_code_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:healthmate_mobile/common/color_extension.dart';
+import 'package:healthmate_mobile/screen/Login/otp_screen.dart';
 
 class MobileScreen extends StatefulWidget {
   const MobileScreen({super.key});
@@ -116,7 +117,9 @@ class _MobileScreenState extends State<MobileScreen> {
                   vertical: 15,
                 ),
                 child: InkWell(
-                  onTap: () {},
+                  onTap: () {
+                    context.push(OtpScreen());
+                  },
                   child: Container(
                     width: double.maxFinite,
                     height: 40,
