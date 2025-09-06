@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:healthmate_mobile/common/color_extension.dart';
+import 'package:healthmate_mobile/screen/Login/login_screen.dart';
 
 class OnBoardingScreen extends StatefulWidget {
   const OnBoardingScreen({super.key});
@@ -138,6 +139,6 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
   }
 
   void actionNextScreen() {
-    debugPrint("jbdv");
+    context.push(LoginScreen());
   }
 }
