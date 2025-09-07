@@ -36,11 +36,45 @@ class _MainTabScreenState extends State<MainTabScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: Drawer(
+        child: Column(
+          children: [
+            UserAccountsDrawerHeader(
+              accountName: Text("Hoàng đẹp trai"),
+              accountEmail: Text("Đẹp khó tả"),
+              currentAccountPicture: CircleAvatar(
+                backgroundImage: AssetImage("assets/img/doctor.png"),
+              ),
+            ),
+            ListTile(
+              leading: Icon(Icons.calendar_today),
+              title: Text("My Appointments"),
+              onTap: () {},
+            ),
+            ListTile(
+              leading: Icon(Icons.add),
+              title: Text("New Appointment"),
+              onTap: () {},
+            ),
+            Spacer(),
+            ListTile(
+              leading: Icon(Icons.logout, color: Colors.red),
+              title: Text("Logout", style: TextStyle(color: Colors.red)),
+              onTap: () {},
+            ),
+          ],
+        ),
+      ),
       appBar: AppBar(
         centerTitle: false,
-        leading: IconButton(
-          onPressed: () {},
-          icon: Icon(Icons.menu, size: 35, color: Colors.white),
+        leading: Builder(
+          builder:
+              (context) => IconButton(
+                onPressed: () {
+                  Scaffold.of(context).openDrawer();
+                },
+                icon: Icon(Icons.menu, size: 35, color: Colors.white),
+              ),
         ),
         title: Text(
           "HealthMate",
