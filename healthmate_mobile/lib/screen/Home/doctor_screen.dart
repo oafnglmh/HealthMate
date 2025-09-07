@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:healthmate_mobile/common/color_extension.dart';
+import 'package:healthmate_mobile/screen/Home/doctor_detail_screen.dart';
 
 class DoctorCellScreen extends StatelessWidget {
   final String name;
@@ -17,7 +18,9 @@ class DoctorCellScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: onPressed,
+      onTap: () {
+        context.push(DoctorDetailScreen());
+      },
       child: Stack(
         alignment: Alignment.topCenter,
         children: [

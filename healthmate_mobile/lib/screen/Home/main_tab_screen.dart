@@ -38,6 +38,7 @@ class _MainTabScreenState extends State<MainTabScreen>
     return Scaffold(
       drawer: Drawer(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             UserAccountsDrawerHeader(
               accountName: Text("Hoàng đẹp trai"),

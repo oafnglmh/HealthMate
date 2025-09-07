@@ -24,10 +24,10 @@ class _HomeTabScreenState extends State<HomeTabScreen> {
     {"title": "Khoa Hồi sức - ICU", "icon": Icons.personal_injury},
   ];
   List doctor = [
-    {"name": "Lê Minh Hoàng", "img": "assets/img/doctor.png"},
-    {"name": "Lê Minh Vương", "img": "assets/img/doctor.png"},
-    {"name": "Lê Minh Quân", "img": "assets/img/doctor.png"},
-    {"name": "Lê Minh Thiên", "img": "assets/img/doctor.png"},
+    {"name": "Lê Minh Hoàng", "img": "assets/img/doctor.png", "id": "1001"},
+    {"name": "Lê Minh Vương", "img": "assets/img/doctor.png", "id": "1002"},
+    {"name": "Lê Minh Quân", "img": "assets/img/doctor.png", "id": "1003"},
+    {"name": "Lê Minh Thiên", "img": "assets/img/doctor.png", "id": "1004"},
   ];
   List imgBanner = [
     {"img": "assets/img/banner.png"},
