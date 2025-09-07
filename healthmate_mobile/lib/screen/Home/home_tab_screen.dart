@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:healthmate_mobile/common/color_extension.dart';
 import 'package:healthmate_mobile/common_widget/category_button.dart';
+import 'package:healthmate_mobile/screen/Home/doctor_screen.dart';
 
 class HomeTabScreen extends StatefulWidget {
   const HomeTabScreen({super.key});
@@ -21,6 +22,12 @@ class _HomeTabScreenState extends State<HomeTabScreen> {
     {"title": "Khoa Chẩn đoán hình ảnh", "icon": Icons.image_search},
     {"title": "Khoa Dược", "icon": Icons.medication},
     {"title": "Khoa Hồi sức - ICU", "icon": Icons.personal_injury},
+  ];
+  List doctor = [
+    {"name": "Lê Minh Hoàng", "img": "assets/img/doctor.png"},
+    {"name": "Lê Minh Vương", "img": "assets/img/doctor.png"},
+    {"name": "Lê Minh Quân", "img": "assets/img/doctor.png"},
+    {"name": "Lê Minh Thiên", "img": "assets/img/doctor.png"},
   ];
   List imgBanner = [
     {"img": "assets/img/banner.png"},
@@ -76,6 +83,23 @@ class _HomeTabScreenState extends State<HomeTabScreen> {
                 },
                 separatorBuilder: (context, index) => SizedBox(width: 15),
                 itemCount: imgBanner.length,
+              ),
+            ),
+            Container(
+              height: 230,
+              child: ListView.separated(
+                scrollDirection: Axis.horizontal,
+                padding: EdgeInsets.symmetric(vertical: 15, horizontal: 20),
+                itemBuilder: (context, index) {
+                  var obj = doctor[index];
+                  return DoctorCellScreen(
+                    name: obj["name"],
+                    img: obj["img"],
+                    onPressed: () {},
+                  );
+                },
+                separatorBuilder: (context, index) => SizedBox(width: 15),
+                itemCount: doctor.length,
               ),
             ),
           ],

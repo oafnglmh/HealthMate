@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:healthmate_mobile/common/color_extension.dart';
+import 'package:healthmate_mobile/screen/Home/doctor_screen.dart';
 import 'package:healthmate_mobile/screen/Home/home_tab_screen.dart';
 
 class MainTabScreen extends StatefulWidget {
