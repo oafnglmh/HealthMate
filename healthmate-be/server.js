@@ -2,20 +2,23 @@ import express from "express";
 import cors from "cors";
 import "dotenv/config";
 
-const db = require("./config/mysql");
-import connectCloudinary from "./config/cloudinary";
+import "./config/mysql.js";
+import connectCloudinary from "./config/cloudinary.js";
+import adminRouter from "./routes/adminRoute.js";
+
 const app = express();
 const port = process.env.PORT || 4000;
-db();
+
+// kết nối Cloudinary
 connectCloudinary();
 
-//middlewares
+// middlewares
 app.use(express.json());
 app.use(cors());
 
-//api
-app.get("/", (req, res) => {
-  res.send("API WORKING");
-});
+// routes
+app.use("/api/admin", adminRouter);
 
-app.listen(port, () => console.log("Start server", port));
+app.listen(port, () =>
+  console.log(`Server running at http://localhost:${port}`)
+);
