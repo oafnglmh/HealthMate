@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:healthmate_mobile/common/color_extension.dart';
+import 'package:healthmate_mobile/screen/Home/appointment_screen.dart';
 
 class DoctorDetailScreen extends StatefulWidget {
   const DoctorDetailScreen({super.key});
@@ -198,7 +200,9 @@ class _DoctorDetailScreenState extends State<DoctorDetailScreen> {
                   borderRadius: BorderRadius.circular(12),
                 ),
               ),
-              onPressed: () {},
+              onPressed: () {
+                context.push(AppointmentScreen(id: doctorProfile["id"]));
+              },
               icon: const Icon(Icons.calendar_month),
               label: const Text("Đặt lịch hẹn", style: TextStyle(fontSize: 16)),
             ),
