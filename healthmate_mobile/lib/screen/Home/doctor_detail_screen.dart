@@ -3,40 +3,14 @@ import 'package:healthmate_mobile/common/color_extension.dart';
 import 'package:healthmate_mobile/screen/Home/appointment_screen.dart';
 
 class DoctorDetailScreen extends StatefulWidget {
-  const DoctorDetailScreen({super.key});
-
+  final int id;
+  const DoctorDetailScreen({super.key, required this.id});
   @override
   State<DoctorDetailScreen> createState() => _DoctorDetailScreenState();
 }
 
 class _DoctorDetailScreenState extends State<DoctorDetailScreen> {
-  final Map<String, dynamic> doctorProfile = {
-    "id": 1,
-    "name": "BS. Lê Minh Hoàng",
-    "avatar": "assets/img/doctor.png",
-    "title": "Thạc sĩ, Bác sĩ Nội tổng quát",
-    "speciality": "Nội khoa - Tiêu hóa",
-    "experience": "10 năm kinh nghiệm",
-    "education": "Tốt nghiệp Đại học Y Hà Nội, tu nghiệp tại Pháp",
-    "workplace": "Bệnh viện HeathMate - Khoa Nội tổng hợp",
-    "rating": 4.8,
-    "reviewsCount": 124,
-    "services": [
-      "Khám và điều trị bệnh lý tiêu hóa",
-      "Nội soi dạ dày - đại tràng",
-      "Tư vấn dinh dưỡng",
-    ],
-    "schedule": [
-      {"day": "Thứ 2", "time": "08:00 - 11:30"},
-      {"day": "Thứ 4", "time": "13:30 - 17:00"},
-      {"day": "Thứ 6", "time": "08:00 - 11:30"},
-    ],
-    "contact": {
-      "phone": "0123 456 789",
-      "email": "hoang.bs@hospital.vn",
-      "address": "Quảng Ngãi",
-    },
-  };
+  final Map<String, dynamic> doctorProfile = {};
 
   @override
   Widget build(BuildContext context) {

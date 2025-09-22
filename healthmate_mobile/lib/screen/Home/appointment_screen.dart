@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:healthmate_mobile/common/color_extension.dart';
+import 'package:healthmate_mobile/screen/Home/Services/HomeService.dart';
 import 'package:intl/intl.dart';
 import 'package:intl/date_symbol_data_local.dart';
 
@@ -15,6 +16,7 @@ class _AppointmentScreenState extends State<AppointmentScreen> {
   int? selectedDoctor;
   DateTime? selectedDate;
   String? selectedTime;
+  final bookingService = HomeService();
   String symptom = "";
   final List<Map<String, dynamic>> doctors = [
     {
@@ -269,7 +271,31 @@ class _AppointmentScreenState extends State<AppointmentScreen> {
                               borderRadius: BorderRadius.circular(12),
                             ),
                           ),
-                          onPressed: () {},
+
+                          onPressed: () async {
+                            try {
+                              final result = await bookingService.addBooking(
+                                userId: 1,
+                                doctorId: widget.id!,
+                                date: selectedDate!,
+                                time: selectedTime!,
+                                symptom: symptom,
+                              );
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content: Text(
+                                    "Đặt lịch thành công: ${result['message']}",
+                                  ),
+                                ),
+                              );
+                            } catch (e) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content: Text("Đặt lịch thất bại: $e"),
+                                ),
+                              );
+                            }
+                          },
                           icon: const Icon(Icons.calendar_month),
                           label: const Text(
                             "Đặt lịch khám",

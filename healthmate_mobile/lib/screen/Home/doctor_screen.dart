@@ -3,6 +3,7 @@ import 'package:healthmate_mobile/common/color_extension.dart';
 import 'package:healthmate_mobile/screen/Home/doctor_detail_screen.dart';
 
 class DoctorCellScreen extends StatelessWidget {
+  final int id;
   final String name;
   final String img;
   final int rating = 5;
@@ -10,6 +11,7 @@ class DoctorCellScreen extends StatelessWidget {
 
   const DoctorCellScreen({
     super.key,
+    required this.id,
     required this.name,
     required this.img,
     required this.onPressed,
@@ -19,8 +21,12 @@ class DoctorCellScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        context.push(DoctorDetailScreen());
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => DoctorDetailScreen(id: id)),
+        );
       },
+
       child: Stack(
         alignment: Alignment.topCenter,
         children: [
@@ -86,7 +92,7 @@ class DoctorCellScreen extends StatelessWidget {
             top: 0,
             child: ClipRRect(
               borderRadius: BorderRadius.circular(50),
-              child: Image.asset(
+              child: Image.network(
                 img,
                 height: 110,
                 width: 100,

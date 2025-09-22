@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:healthmate_mobile/common/color_extension.dart';
+import 'package:healthmate_mobile/screen/Home/chat_screen.dart';
 import 'package:healthmate_mobile/screen/Home/doctor_screen.dart';
 import 'package:healthmate_mobile/screen/Home/home_tab_screen.dart';
+import 'package:healthmate_mobile/screen/Home/notification_screen.dart';
+import 'package:healthmate_mobile/screen/Home/setting_screen.dart';
 
 class MainTabScreen extends StatefulWidget {
   const MainTabScreen({super.key});
@@ -28,7 +31,6 @@ class _MainTabScreenState extends State<MainTabScreen>
 
   @override
   void dispose() {
-    // TODO: implement dispose
     super.dispose();
     controller.dispose();
   }
@@ -36,112 +38,124 @@ class _MainTabScreenState extends State<MainTabScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: Drawer(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            UserAccountsDrawerHeader(
-              accountName: Text("Hoàng đẹp trai"),
-              accountEmail: Text("Đẹp khó tả"),
-              currentAccountPicture: CircleAvatar(
-                backgroundImage: AssetImage("assets/img/doctor.png"),
-              ),
-            ),
-            ListTile(
-              leading: Icon(Icons.calendar_today),
-              title: Text("My Appointments"),
-              onTap: () {},
-            ),
-            ListTile(
-              leading: Icon(Icons.add),
-              title: Text("New Appointment"),
-              onTap: () {},
-            ),
-            Spacer(),
-            ListTile(
-              leading: Icon(Icons.logout, color: Colors.red),
-              title: Text("Logout", style: TextStyle(color: Colors.red)),
-              onTap: () {},
-            ),
-          ],
-        ),
-      ),
-      appBar: AppBar(
-        centerTitle: false,
-        leading: Builder(
-          builder:
-              (context) => IconButton(
-                onPressed: () {
-                  Scaffold.of(context).openDrawer();
-                },
-                icon: Icon(Icons.menu, size: 35, color: Colors.white),
-              ),
-        ),
-        title: Text(
-          "HealthMate",
-          style: TextStyle(
-            color: Colors.white,
-            fontWeight: FontWeight.w600,
-            fontSize: 16,
-          ),
-        ),
-        actions: [
-          Container(
-            alignment: Alignment.center,
-            child: InkWell(
-              onTap: () {},
-              child: Container(
-                height: 30,
-                padding: const EdgeInsets.symmetric(horizontal: 8),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(15),
-                ),
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
+      drawer:
+          selectTab == 0
+              ? Drawer(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Icon(
-                      Icons.location_on_outlined,
-                      color: TColor.primary,
-                      size: 15,
-                    ),
-                    const SizedBox(width: 8),
-                    Text(
-                      "Hà Nội",
-                      style: TextStyle(
-                        color: TColor.primaryText,
-                        fontSize: 10,
-                        fontWeight: FontWeight.w500,
+                    UserAccountsDrawerHeader(
+                      accountName: Text("Hoàng đẹp trai"),
+                      accountEmail: Text("Đẹp khó tả"),
+                      currentAccountPicture: CircleAvatar(
+                        backgroundImage: AssetImage("assets/img/doctor.png"),
                       ),
+                    ),
+                    ListTile(
+                      leading: Icon(Icons.calendar_today),
+                      title: Text("My Appointments"),
+                      onTap: () {},
+                    ),
+                    ListTile(
+                      leading: Icon(Icons.add),
+                      title: Text("New Appointment"),
+                      onTap: () {},
+                    ),
+                    Spacer(),
+                    ListTile(
+                      leading: Icon(Icons.logout, color: Colors.red),
+                      title: Text(
+                        "Logout",
+                        style: TextStyle(color: Colors.red),
+                      ),
+                      onTap: () {},
                     ),
                   ],
                 ),
-              ),
-            ),
-          ),
-          IconButton(
-            onPressed: () {},
-            icon: Icon(Icons.notifications, color: Colors.white),
-          ),
-        ],
-      ),
+              )
+              : null,
+      appBar:
+          selectTab == 0
+              ? AppBar(
+                centerTitle: false,
+                leading: Builder(
+                  builder:
+                      (context) => IconButton(
+                        onPressed: () {
+                          Scaffold.of(context).openDrawer();
+                        },
+                        icon: Icon(Icons.menu, size: 35, color: Colors.white),
+                      ),
+                ),
+                title: Text(
+                  "HealthMate",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.w600,
+                    fontSize: 16,
+                  ),
+                ),
+                actions: [
+                  Container(
+                    alignment: Alignment.center,
+                    child: InkWell(
+                      onTap: () {},
+                      child: Container(
+                        height: 30,
+                        padding: const EdgeInsets.symmetric(horizontal: 8),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(15),
+                        ),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Icon(
+                              Icons.location_on_outlined,
+                              color: TColor.primary,
+                              size: 15,
+                            ),
+                            const SizedBox(width: 8),
+                            Text(
+                              "Hà Nội",
+                              style: TextStyle(
+                                color: TColor.primaryText,
+                                fontSize: 10,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                  IconButton(
+                    onPressed: () {
+                      context.push(NotificationScreen());
+                    },
+                    icon: Icon(Icons.notifications, color: Colors.white),
+                  ),
+                ],
+              )
+              : null,
       body: Column(
         children: [
-          Container(
-            width: double.maxFinite,
-            height: 15,
-            decoration: BoxDecoration(
-              color: TColor.primary,
-              borderRadius: const BorderRadius.only(
-                bottomLeft: Radius.circular(15),
-                bottomRight: Radius.circular(15),
+          if (selectTab == 0)
+            Container(
+              width: double.maxFinite,
+              height: 15,
+              decoration: BoxDecoration(
+                color: TColor.primary,
+                borderRadius: const BorderRadius.only(
+                  bottomLeft: Radius.circular(15),
+                  bottomRight: Radius.circular(15),
+                ),
               ),
             ),
-          ),
           Expanded(
             child: TabBarView(
               controller: controller,
-              children: [HomeTabScreen(), Container(), Container()],
+              children: [HomeTabScreen(), ChatScreen(), SettingScreen()],
             ),
           ),
         ],

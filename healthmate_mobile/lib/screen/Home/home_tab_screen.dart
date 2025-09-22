@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:healthmate_mobile/common/color_extension.dart';
 import 'package:healthmate_mobile/common_widget/category_button.dart';
+import 'package:healthmate_mobile/screen/Home/Services/HomeService.dart';
 import 'package:healthmate_mobile/screen/Home/doctor_screen.dart';
 
 class HomeTabScreen extends StatefulWidget {
@@ -11,6 +12,7 @@ class HomeTabScreen extends StatefulWidget {
 }
 
 class _HomeTabScreenState extends State<HomeTabScreen> {
+  final service = HomeService();
   List categoryArr = [
     {"title": "Khoa Khám bệnh", "icon": Icons.local_hospital},
     {"title": "Khoa Nội", "icon": Icons.monitor_heart},
@@ -23,17 +25,29 @@ class _HomeTabScreenState extends State<HomeTabScreen> {
     {"title": "Khoa Dược", "icon": Icons.medication},
     {"title": "Khoa Hồi sức - ICU", "icon": Icons.personal_injury},
   ];
-  List doctor = [
-    {"name": "Lê Minh Hoàng", "img": "assets/img/doctor.png", "id": "1001"},
-    {"name": "Lê Minh Vương", "img": "assets/img/doctor.png", "id": "1002"},
-    {"name": "Lê Minh Quân", "img": "assets/img/doctor.png", "id": "1003"},
-    {"name": "Lê Minh Thiên", "img": "assets/img/doctor.png", "id": "1004"},
-  ];
+  List doctors = [];
   List imgBanner = [
     {"img": "assets/img/banner.png"},
     {"img": "assets/img/banner.png"},
     {"img": "assets/img/banner.png"},
   ];
+  @override
+  void initState() {
+    super.initState();
+    _loadDoctors();
+  }
+
+  Future<void> _loadDoctors() async {
+    try {
+      final response = await service.getAllDoctor();
+      setState(() {
+        doctors = response["data"];
+      });
+    } catch (e) {
+      print("Lỗi load doctor: $e");
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -91,15 +105,16 @@ class _HomeTabScreenState extends State<HomeTabScreen> {
                 scrollDirection: Axis.horizontal,
                 padding: EdgeInsets.symmetric(vertical: 15, horizontal: 20),
                 itemBuilder: (context, index) {
-                  var obj = doctor[index];
+                  var obj = doctors[index];
                   return DoctorCellScreen(
+                    id: obj["id"],
                     name: obj["name"],
-                    img: obj["img"],
+                    img: obj["image"] ?? "assets/img/doctor.png",
                     onPressed: () {},
                   );
                 },
                 separatorBuilder: (context, index) => SizedBox(width: 15),
-                itemCount: doctor.length,
+                itemCount: doctors.length,
               ),
             ),
           ],
